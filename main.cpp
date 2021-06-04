@@ -1,7 +1,6 @@
 #ifdef __cplusplus
 #include <iostream>
 #include <math.h>
-#include <cuda.h>
 
 __global__ 
 void add(int n, float* x, float* y) {
@@ -21,7 +20,7 @@ int main(void) {
 		y[i] = 2.0f;
 	}
 
-	add << <1, 1 >> > (N, x, y);
+	add<<<1, 1>>> (N, x, y);
 	cudaDeviceSynchronize();
 
 	float maxError = 0.0f;
